@@ -6,6 +6,7 @@ import com.example.spring2.entity.Cart;
 import com.example.spring2.entity.CartItem;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,5 +34,13 @@ public class CartMapper {
                 item.getQuantity(),
                 item.getPriceAtAddition()
         );
+
+        /*return CartItemResponse.builder()
+                .productId(item.getProduct().getId())
+                .productName(item.getProduct().getName())
+                .quantity(item.getQuantity())
+                .priceAtAddition(item.getPriceAtAddition()) // zaten BigDecimal olmalı
+                .build();
+    }*/
     }
 }

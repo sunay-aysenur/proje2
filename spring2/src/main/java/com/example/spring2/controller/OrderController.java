@@ -2,7 +2,7 @@ package com.example.spring2.controller;
 
 import com.example.spring2.dto.request.PlaceOrderRequest;
 import com.example.spring2.dto.response.OrderResponse;
-import com.example.spring2.service.OrderService;
+import com.example.spring2.service.Impl.OrderServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/orders")
 @RequiredArgsConstructor
 public class OrderController {
-    private final OrderService orderService;
+    private final OrderServiceImpl orderService;
 
     @PostMapping("/{customerId}")
     public ResponseEntity<OrderResponse> placeOrder(@PathVariable Long customerId,

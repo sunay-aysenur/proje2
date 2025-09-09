@@ -20,4 +20,10 @@ public class Cart extends BaseEntity{
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true) // Her sepetin birden fazla CartItem'ı olabilir.
     private List<CartItem>  items = new ArrayList<>();
+
+    public void removeCartItem(CartItem item) { //yeni eklenen metot
+        items.remove(item);        // Java listeden çıkar
+        item.setCart(null);        // İlişkiyi kopar
+    }
+
 }

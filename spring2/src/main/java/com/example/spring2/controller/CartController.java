@@ -4,7 +4,8 @@ import com.example.spring2.dto.request.AddProductToCartRequest;
 import com.example.spring2.dto.request.RemoveProductFromCartRequest;
 import com.example.spring2.dto.request.UpdateCartRequest;
 import com.example.spring2.dto.response.CartResponse;
-import com.example.spring2.service.CartService;
+import com.example.spring2.dto.response.CartSummaryResponse;
+import com.example.spring2.service.Impl.CartServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CartController {
 
-    private final CartService cartService;
+    private final CartServiceImpl cartService;
 
     @GetMapping("/{customerId}")
     public ResponseEntity<CartResponse> getCart(@PathVariable Long customerId) {
@@ -52,6 +53,11 @@ public class CartController {
             @PathVariable Long customerId,
             @RequestBody @Valid RemoveProductFromCartRequest request) {
         return ResponseEntity.ok(cartService.removeProductFromCart(customerId, request.getProductId()));
+    }
+
+    @GetMapping("/{customerId}/summary")
+    public ResponseEntity<CartSummaryResponse> getCartSummary(@PathVariable Long customerId) {
+        return ResponseEntity.ok(cartService.getCartSummary(customerId));
     }
 
 }

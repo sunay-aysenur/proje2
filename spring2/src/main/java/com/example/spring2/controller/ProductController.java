@@ -3,7 +3,7 @@ package com.example.spring2.controller;
 import com.example.spring2.dto.request.CreateProductRequest;
 import com.example.spring2.dto.request.UpdateProductRequest;
 import com.example.spring2.dto.response.ProductResponse;
-import com.example.spring2.service.ProductService;
+import com.example.spring2.service.Impl.ProductServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor // Lombok sayesinde final olarak tanımlanan productService için otomatik olarak bir constructor oluşturulur, böylece dependency injection sağlanır.
 public class ProductController {
 
-    private final ProductService productService;
+    private final ProductServiceImpl productService;
 
     @PostMapping // Bu genellikle yeni bir kaynak (örneğin, yeni bir ürün) oluşturmak için kullanılır.
     public ResponseEntity<ProductResponse> createProduct(@RequestBody @Valid CreateProductRequest request) { //Gelen HTTP isteğinin gövdesindeki JSON verisinin otomatik olarak CreateProductRequest nesnesine dönüştürülmesini sağlar.
